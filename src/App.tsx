@@ -21,7 +21,7 @@ const App: React.FC = () => {
           
           <Route path="/sunlight">
             <Sunlight 
-              previous="/" 
+              previous="/"
               linkTo="/water"
             />
           </Route>
