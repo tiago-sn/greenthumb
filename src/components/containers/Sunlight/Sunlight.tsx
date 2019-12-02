@@ -9,10 +9,14 @@ interface ISunlightProps {
 }
 
 const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous }) => {
+
   return (
     <div>
       <Header />
       <h1>Sunlinght</h1>
+
+      <br />
+
       <Link to={linkTo}>
         Next
       </Link>

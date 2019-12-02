@@ -13,6 +13,11 @@ const Pets: React.FC<IPetsProps> = ({ linkTo, previous }) => {
     <div>
       <Header />
       <h1>Pets</h1>
+
+      <ul>
+        
+      </ul>
+
       <Link to={linkTo}>
         Next
       </Link>
