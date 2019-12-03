@@ -1,18 +1,9 @@
 import {
   RequestPlantListParams,
-  Plant,
-  FormData,
   Sunlight,
   Water,
   Pets
 } from '../service/api/types';
-
-export interface ApplicationState {
-  userChoices: UserChoicesState
-  plantList: Plant[];
-  selectedPlant: Plant;
-  userData: FormData
-}
 
 export interface UserChoicesState extends RequestPlantListParams { }
 

@@ -21,23 +21,25 @@ export const ActionTypes = {
  * Action Creators 
  */
 
-export function selectSunlight(sunlight: Sunlight): UserChoicesActions {
-  return {
-    type: SELECT_SUNLIGHT,
-    payload: sunlight
-  }
-}
+export const userChoicesActionCreators = {
+  selectPets: (pets: Pets): UserChoicesActions => {
+    return {
+      type: SELECT_PETS,
+      payload: pets
+    }
+  },
 
-export function selectWater(water: Water): UserChoicesActions {
-  return {
-    type: SELECT_WATER,
-    payload: water,
-  }
-}
+  selectWater: (water: Water): UserChoicesActions => {
+    return {
+      type: SELECT_WATER,
+      payload: water,
+    }
+  },
 
-export function selectPets(pets: Pets): UserChoicesActions {
-  return {
-    type: SELECT_PETS,
-    payload: pets
+  selectSunlight: (sunlight: Sunlight): UserChoicesActions => {
+    return {
+      type: SELECT_SUNLIGHT,
+      payload: sunlight
+    }
   }
 }
