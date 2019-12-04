@@ -3,20 +3,18 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import { UserChoicesState } from "../../../store/types";
-import { userChoicesActionCreators } from '../../../store/actions';
-import { Sunlight, Water, Pets as pets } from "../../../service/api/types";
+import { ApplicationState } from "../../../store/types";
+import { ActionCreators } from '../../../store/actions';
+import { Pets as pets } from "../../../service/api/types";
 
 import Header from '../../Header';
 
 interface IStateProps {
-  sun: Sunlight;
-  water: Water;
   pets: pets;
 }
 
 interface IDispatchProps {
-  selectPets: typeof userChoicesActionCreators.selectPets;
+  selectPets: typeof ActionCreators.selectPets;
 }
 
 interface IOwnProps {
@@ -52,15 +50,15 @@ const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
   );
 }
 
-const mapStateToProps = (state: UserChoicesState) => ({
-  ...state
+const mapStateToProps = (state: ApplicationState): IStateProps => ({
+  pets: state.pets
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators(userChoicesActionCreators, dispatch)
+  bindActionCreators(ActionCreators, dispatch)
 
 
-export default connect<IStateProps, IDispatchProps, IOwnProps, IPetsProps>(
+export default connect<IStateProps, IDispatchProps, IOwnProps, ApplicationState>(
   mapStateToProps,
   mapDispatchToProps
 )(Pets);
