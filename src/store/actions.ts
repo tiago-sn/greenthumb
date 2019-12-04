@@ -1,6 +1,14 @@
-import { UserChoicesActions } from './types';
+import {
+  UserChoicesState,
+  UserChoicesActions,
+  SelectSunLight,
+  SelectWater,
+  SelectPets,
+
+  RequestPlantListAction,
+  RequestPlantList,
+} from './types';
 import { Sunlight, Water, Pets } from '../service/api/types';
-import { SelectSunLight, SelectWater, SelectPets } from './types';
 
 /**
  * Action Types (Redux Types). This is not Typescript types, that's why they
@@ -11,10 +19,11 @@ const SELECT_SUNLIGHT: SelectSunLight = "SELECT_SUNLIGHT";
 const SELECT_WATER: SelectWater = "SELECT_WATER";
 const SELECT_PETS: SelectPets = "SELECT_PETS";
 
-export const ActionTypes = {
+
+export const userChoicesActionTypes = {
   SELECT_SUNLIGHT,
   SELECT_WATER,
-  SELECT_PETS
+  SELECT_PETS,
 }
 
 /**
@@ -43,3 +52,22 @@ export const userChoicesActionCreators = {
     }
   }
 }
+
+/**
+ *  ---------------------------------- PLANTS ----------------------------------------
+ */
+
+const REQUEST_PLANT_LIST: RequestPlantList = "REQUEST_PLANT_LIST";
+
+export const plantsActionTypes = {
+  REQUEST_PLANT_LIST
+}
+
+
+export const requestPlantlistActionCreator = (
+  userChoices: UserChoicesState
+): RequestPlantListAction => ({
+  type: REQUEST_PLANT_LIST,
+  payload: userChoices
+});
+

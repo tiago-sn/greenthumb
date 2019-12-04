@@ -2,10 +2,16 @@ import {
   RequestPlantListParams,
   Sunlight,
   Water,
-  Pets
+  Pets,
+  Plant
 } from '../service/api/types';
 
+/**
+ * ---------------------- USER CHOICES -----------------------------
+ */
+
 export interface UserChoicesState extends RequestPlantListParams { }
+
 
 /**
  * Action Types (Typescript types)
@@ -14,6 +20,8 @@ export interface UserChoicesState extends RequestPlantListParams { }
 export type SelectSunLight = "SELECT_SUNLIGHT";
 export type SelectWater = "SELECT_WATER";
 export type SelectPets = "SELECT_PETS";
+
+
 
 /**
  * Action Interfaces (Typescript Action Types)
@@ -34,4 +42,30 @@ interface SelectPetsAction {
   payload: Pets;
 }
 
-export type UserChoicesActions = SelectSunlightAction | SelectWaterAction | SelectPetsAction;
+export type UserChoicesActions =
+  SelectSunlightAction |
+  SelectWaterAction |
+  SelectPetsAction;
+
+/**
+ * --------------------- PLANTS ------------------------
+ */
+
+export interface PlantsState {
+  plants: Plant[]
+}
+
+/**
+ * Action Type (Typescript type)
+ */
+
+export type RequestPlantList = "REQUEST_PLANT_LIST";
+
+/**
+ * Action Interfaces (Typescript Action Types)
+ */
+
+export interface RequestPlantListAction {
+  type: RequestPlantList;
+  payload: UserChoicesState;
+}
