@@ -1,31 +1,32 @@
 import {
-  UserChoicesState,
-  UserChoicesActions,
+  ApplicationState,
+  Action,
 } from './types';
-import { userChoicesActionTypes } from './actions';
+import { ActionTypes } from './actions';
 
-const INITIAL_STATE: UserChoicesState = {
+const INITIAL_STATE: ApplicationState = {
   sun: '',
   water: '',
-  pets: ''
+  pets: '',
+  plants: []
 }
 
-export function userChoicesReducer(
+export default function reducer(
   state = INITIAL_STATE,
-  action: UserChoicesActions
-): UserChoicesState {
+  action: Action
+): ApplicationState {
   switch (action.type) {
-    case userChoicesActionTypes.SELECT_SUNLIGHT:
+    case ActionTypes.SELECT_SUNLIGHT:
       return {
         ...state,
         sun: action.payload,
       }
-    case userChoicesActionTypes.SELECT_WATER:
+    case ActionTypes.SELECT_WATER:
       return {
         ...state,
         water: action.payload,
       }
-    case userChoicesActionTypes.SELECT_PETS:
+    case ActionTypes.SELECT_PETS:
       return {
         ...state,
         pets: action.payload

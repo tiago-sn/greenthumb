@@ -1,11 +1,11 @@
 import { createStore, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { userChoicesReducer } from './reducer';
-import { UserChoicesState } from './types';
+import reducer from './reducer';
+import { ApplicationState } from './types';
 
-const store: Store<UserChoicesState> = createStore(
-  userChoicesReducer,
+const store: Store<ApplicationState> = createStore(
+  reducer,
   composeWithDevTools()
 );
 
