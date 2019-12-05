@@ -41,7 +41,10 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
 
       <br />
 
-      <Link to={linkTo}>
+      <Link to={(location) => {
+        if (sun !== "") return linkTo;
+        else return location;
+      }}>
         Next
       </Link>
       <br />
