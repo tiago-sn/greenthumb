@@ -31,6 +31,11 @@ export default function reducer(
         ...state,
         pets: action.payload
       }
+    case ActionTypes.REQUEST_PLANT_LIST_SUCCEEDED:
+      return {
+        ...state,
+        plants: action.payload
+      }
     default:
       return state;
   }

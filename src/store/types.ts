@@ -18,6 +18,7 @@ export type SelectSunLight = "SELECT_SUNLIGHT";
 export type SelectWater = "SELECT_WATER";
 export type SelectPets = "SELECT_PETS";
 export type RequestPlantList = "REQUEST_PLANT_LIST";
+export type RequestPlantListSucceeded = "REQUEST_PLANT_LIST_SUCCEEDED";
 
 /**
  * Action Interfaces (Typescript Action Types)
@@ -38,13 +39,19 @@ interface SelectPetsAction {
   payload: Pets;
 }
 
-interface RequestPlantListAction {
+export interface RequestPlantListAction {
   type: RequestPlantList;
   payload: RequestPlantListParams;
+}
+
+export interface RequestPlantListSucceededAction {
+  type: RequestPlantListSucceeded;
+  payload: Plant[];
 }
 
 export type Action =
   SelectSunlightAction |
   SelectWaterAction |
   SelectPetsAction |
-  RequestPlantListAction;
+  RequestPlantListAction |
+  RequestPlantListSucceededAction;
