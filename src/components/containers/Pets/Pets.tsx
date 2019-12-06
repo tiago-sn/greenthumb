@@ -39,7 +39,10 @@ const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
 
       <br />
 
-      <Link to={linkTo}>
+      <Link to={location => {
+        if (pets !== "") return linkTo;
+        else return location;
+      }}>
         Next
       </Link>
       <br />

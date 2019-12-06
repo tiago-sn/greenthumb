@@ -40,7 +40,10 @@ const Water: React.FC<IWaterProps> = ({ linkTo, previous, selectWater, water }) 
 
       <br />
 
-      <Link to={linkTo}>
+      <Link to={location => {
+        if (water !== "") return linkTo;
+        else return location;
+      }}>
         Next
       </Link>
       <br />
