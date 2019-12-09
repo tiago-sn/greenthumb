@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
@@ -9,6 +8,8 @@ import { Sunlight as Sun } from '../../../service/api/types';
 
 import Button from '../../Button';
 
+import leftArrowGreen from './img/left-arrow-green.svg';
+import rightArrowWhite from './img/right-arrow-white.svg';
 import "./style.scss";
 
 interface IStateProps {
@@ -45,20 +46,26 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
       <Button 
         to={linkTo}
         deactivated={sun === "" ? true : false}
+        img={{
+          src: rightArrowWhite,
+          alt: "arrow right"
+        }}
       >
         Next
       </Button>
 
-      <Link to={(location) => {
-        if (sun !== "") return linkTo;
-        else return location;
-      }}>
-        Next
-      </Link>
       <br />
-      <Link to={previous}>
+      
+      <Button
+        to={previous}
+        className="light"
+        img={{
+          src: leftArrowGreen,
+          alt: "arrow left"
+        }}
+      >
         Home
-      </Link>
+      </Button>
     </main>
   );
 }
