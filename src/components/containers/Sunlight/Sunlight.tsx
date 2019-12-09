@@ -7,7 +7,9 @@ import { ApplicationState } from '../../../store/types';
 import { ActionCreators } from '../../../store/actions';
 import { Sunlight as Sun } from '../../../service/api/types';
 
-import Header from '../../Header';
+import Button from '../../Button';
+
+import "./style.scss";
 
 interface IStateProps {
   sun: Sun;
@@ -27,9 +29,8 @@ type ISunlightProps = IStateProps & IDispatchProps & IOwnProps;
 const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, sun }) => {
 
   return (
-    <div>
-      <Header />
-      <h1>Sunlinght</h1>
+    <main className="sunlight">
+      <h1 className="title">First, set the amount of <strong>sunlight</strong> your plant will get.</h1>
 
       <ul>
         <li onClick={() => selectSunlight("high")}>high</li>
@@ -41,6 +42,13 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
 
       <br />
 
+      <Button 
+        to={linkTo}
+        deactivated={sun === "" ? true : false}
+      >
+        Next
+      </Button>
+
       <Link to={(location) => {
         if (sun !== "") return linkTo;
         else return location;
@@ -51,7 +59,7 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
       <Link to={previous}>
         Home
       </Link>
-    </div>
+    </main>
   );
 }
 
