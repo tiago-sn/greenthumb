@@ -1,20 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./style.scss";
+import { StyledButton } from './styles';
 
-interface IButtonProps {
+import leftArrowGreen from './img/left-arrow-green.svg';
+import rightArrowGreen from './img/right-arrow-green.svg';
+import leftArrowWhite from './img/left-arrow-white.svg';
+import rightArrowWhite from './img/right-arrow-white.svg';
+
+
+export interface IButtonProps {
   /**
    * this property holds the href to be used in the anchor tag of the <Link /> component
    * from the react-router-dom package.
    */
   to: string;
-  img?: {
-    src: string;
-    alt: string;
-  };
-  className?: string;
+  arrow?: "left arrow" | "right arrow";
   deactivated?: boolean;
+  light?: boolean;
 }
 
 /**
@@ -25,12 +28,27 @@ interface IButtonProps {
  * 
  * @param {IButtonProps} props
  */
-const Button: React.FC<IButtonProps> = ({ to, img, className = "button", deactivated, children }) => {
+const Button: React.FC<IButtonProps> = ({ to, arrow, deactivated, children, light }) => {
+  const selectArrowImage = () => {
+    if (arrow === "left arrow" && light) return leftArrowGreen
+    if (arrow === "left arrow" && !light) return leftArrowWhite
+    if (arrow === "right arrow" && light) return rightArrowGreen
+    if (arrow === "right arrow" && !light) return rightArrowWhite
+  }
+
   return (
-    <div className={className}>
+    <StyledButton
+      backgroundColor={light === true ? "#ffffff" : "#15573F"}
+      borderColor={light === true ? "#15573F" : "#ffffff"}
+    >
       {
-        img ? 
-        <img src={img.src} alt={img.alt}/> :
+        arrow ? 
+        <img 
+          src={
+            selectArrowImage()
+          } 
+          alt={arrow}
+        /> :
         undefined
       }
 
@@ -51,7 +69,7 @@ const Button: React.FC<IButtonProps> = ({ to, img, className = "button", deactiv
       }>
         {children}
       </Link>
-    </div>
+    </StyledButton>
   );
 }
 
