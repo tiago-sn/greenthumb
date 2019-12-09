@@ -16,10 +16,7 @@ const Home: React.FC<IHomeProps> = ({ linkTo }) => {
       <h1 className="title">Find your next green friend</h1>        
       <Button 
         to={linkTo}
-        img={{
-          src: rightArrowIcon,
-          alt: "Right arrow"
-        }}
+        arrow="right arrow"
       >
         start quizz
       </Button>

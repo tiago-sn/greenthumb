@@ -8,6 +8,7 @@ import { ActionCreators } from "../../../store/actions";
 import { Water as water } from "../../../service/api/types";
 
 import Header from '../../Header';
+import Button from '../../Button';
 
 interface IStateProps {
   water: water;
@@ -47,9 +48,13 @@ const Water: React.FC<IWaterProps> = ({ linkTo, previous, selectWater, water }) 
         Next
       </Link>
       <br />
-      <Link to={previous}>
+
+      <Button
+        to={previous}
+        light
+      >
         Previous
-      </Link>
+      </Button>
     </div>
   );
 }

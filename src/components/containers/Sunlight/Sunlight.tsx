@@ -8,8 +8,6 @@ import { Sunlight as Sun } from '../../../service/api/types';
 
 import Button from '../../Button';
 
-import leftArrowGreen from './img/left-arrow-green.svg';
-import rightArrowWhite from './img/right-arrow-white.svg';
 import "./style.scss";
 
 interface IStateProps {
@@ -46,10 +44,7 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
       <Button 
         to={linkTo}
         deactivated={sun === "" ? true : false}
-        img={{
-          src: rightArrowWhite,
-          alt: "arrow right"
-        }}
+        arrow="right arrow"
       >
         Next
       </Button>
@@ -58,11 +53,8 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
       
       <Button
         to={previous}
-        className="light"
-        img={{
-          src: leftArrowGreen,
-          alt: "arrow left"
-        }}
+        arrow="left arrow"
+        light
       >
         Home
       </Button>
