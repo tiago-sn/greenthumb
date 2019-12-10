@@ -8,6 +8,7 @@ import { Sunlight as Sun } from '../../../service/api/types';
 
 import Button from '../../Button';
 import Title from "../../Title";
+import RadioButton from '../../RadioButton';
 import sunImage from './img/sun.png';
 
 interface IStateProps {
@@ -26,6 +27,13 @@ interface IOwnProps {
 type ISunlightProps = IStateProps & IDispatchProps & IOwnProps;
 
 const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, sun }) => {
+  const formStyle = {
+    display: "grid"
+  }
+
+  const handleCheckboxChenge = (e: React.ChangeEvent<HTMLInputElement>) => {
+    selectSunlight((e.currentTarget.value as Sun))
+  }
 
   return (
     <main className="sunlight">
@@ -33,11 +41,49 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
 
       <Title className="title">First, set the amount<br /> of <strong>sunlight</strong> your<br /> plant will get.</Title>
 
-      <ul>
-        <li onClick={() => selectSunlight("high")}>high</li>
-        <li onClick={() => selectSunlight("low")}>low</li>
-        <li onClick={() => selectSunlight("no")}>no</li>
-      </ul>
+      <form action="" style={formStyle}>
+        {/* <label htmlFor="high">
+          <input
+            type="radio"
+            name="sun"
+            id="high"
+            value="high"
+            onChange={handleCheckboxChenge}
+          />
+          <span>High sunlight</span>
+        </label> */}
+
+        <RadioButton
+          name="sun"
+          id="high"
+          value="high"
+          handleChange={handleCheckboxChenge}
+        >
+          High sunlight
+        </RadioButton>
+
+        <label htmlFor="low">
+          <input
+            type="radio"
+            name="sun"
+            id="low"
+            value="low"
+            onChange={handleCheckboxChenge}
+          />
+          <span>Low sunlight</span>
+        </label>
+
+        <label htmlFor="no">
+          <input
+            type="radio"
+            name="sun"
+            id="no"
+            value="no"
+            onChange={handleCheckboxChenge}
+          />
+          <span>No sunlight</span>
+        </label>
+      </form>
 
       <span>Selected: {sun}</span>
 
