@@ -7,6 +7,8 @@ import { ActionCreators } from '../../../store/actions';
 import { Pets as pets } from "../../../service/api/types";
 
 import Button from '../../Button';
+import Title from '../../Title';
+import { StyledSubtitle } from './style';
 
 interface IStateProps {
   pets: pets;
@@ -26,7 +28,8 @@ type IPetsProps = IStateProps & IDispatchProps & IOwnProps;
 const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
   return (
     <div>
-      <h1>Pets</h1>
+      <Title>Do you have pets?<br /> Do they <strong>chew</strong> plants?</Title>
+      <StyledSubtitle>We are asking because some plants<br /> can be toxic for your buddy.</StyledSubtitle>
 
       <ul>
         <li onClick={() => selectPets('true')}>true</li>
@@ -36,7 +39,7 @@ const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
       <span>Selected: {pets}</span>
 
       <br />
-{/* 
+      {/* 
       <Link to={location => {
         if (pets !== "") return linkTo;
         else return location;
@@ -46,7 +49,7 @@ const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
 
       <Button
         to={linkTo}
-        deactivated={ pets === "" ? true : false }
+        deactivated={pets === "" ? true : false}
         arrow="right arrow"
       >
         Next
@@ -62,7 +65,7 @@ const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
         Previous
       </Button>
 
-{/*       
+      {/*       
       <Link to={previous}>
         Previous
       </Link> */}

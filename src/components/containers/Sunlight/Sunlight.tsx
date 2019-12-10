@@ -8,7 +8,7 @@ import { Sunlight as Sun } from '../../../service/api/types';
 
 import Button from '../../Button';
 
-import "./style.scss";
+import Title from "../../Title";
 
 interface IStateProps {
   sun: Sun;
@@ -29,7 +29,7 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
 
   return (
     <main className="sunlight">
-      <h1 className="title">First, set the amount of <strong>sunlight</strong> your plant will get.</h1>
+      <Title className="title">First, set the amount<br /> of <strong>sunlight</strong> your<br /> plant will get.</Title>
 
       <ul>
         <li onClick={() => selectSunlight("high")}>high</li>
@@ -41,7 +41,7 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
 
       <br />
 
-      <Button 
+      <Button
         to={linkTo}
         deactivated={sun === "" ? true : false}
         arrow="right arrow"
@@ -50,7 +50,7 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
       </Button>
 
       <br />
-      
+
       <Button
         to={previous}
         arrow="left arrow"

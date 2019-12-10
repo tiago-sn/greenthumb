@@ -7,6 +7,7 @@ import { ActionCreators } from "../../../store/actions";
 import { Water as water } from "../../../service/api/types";
 
 import Button from '../../Button';
+import Title from '../../Title';
 
 interface IStateProps {
   water: water;
@@ -26,7 +27,7 @@ type IWaterProps = IOwnProps & IStateProps & IDispatchProps;
 const Water: React.FC<IWaterProps> = ({ linkTo, previous, selectWater, water }) => {
   return (
     <div>
-      <h1>Water</h1>
+      <Title>How often do you want to <strong>water</strong> your plant?</Title>
 
       <ul>
         <li onClick={() => selectWater("daily")}>daily</li>
@@ -47,7 +48,7 @@ const Water: React.FC<IWaterProps> = ({ linkTo, previous, selectWater, water }) 
 
       <Button
         to={linkTo}
-        deactivated={ water === "" ? true : false }
+        deactivated={water === "" ? true : false}
         arrow="right arrow"
       >
         Next
