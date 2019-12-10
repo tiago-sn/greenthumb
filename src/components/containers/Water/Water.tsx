@@ -8,6 +8,7 @@ import { Water as water } from "../../../service/api/types";
 
 import Button from '../../Button';
 import Title from '../../Title';
+import waterImage from "./img/wateringcan.png";
 
 interface IStateProps {
   water: water;
@@ -27,6 +28,8 @@ type IWaterProps = IOwnProps & IStateProps & IDispatchProps;
 const Water: React.FC<IWaterProps> = ({ linkTo, previous, selectWater, water }) => {
   return (
     <div>
+      <img src={waterImage} alt="A digital draw of a smiling watering can" />
+
       <Title>How often do you want to <strong>water</strong> your plant?</Title>
 
       <ul>

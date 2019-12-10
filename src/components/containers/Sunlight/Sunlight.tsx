@@ -7,8 +7,8 @@ import { ActionCreators } from '../../../store/actions';
 import { Sunlight as Sun } from '../../../service/api/types';
 
 import Button from '../../Button';
-
 import Title from "../../Title";
+import sunImage from './img/sun.png';
 
 interface IStateProps {
   sun: Sun;
@@ -29,6 +29,8 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
 
   return (
     <main className="sunlight">
+      <img src={sunImage} alt="a digital drow of a sun using sunglass." />
+
       <Title className="title">First, set the amount<br /> of <strong>sunlight</strong> your<br /> plant will get.</Title>
 
       <ul>

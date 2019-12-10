@@ -9,6 +9,7 @@ import { Pets as pets } from "../../../service/api/types";
 import Button from '../../Button';
 import Title from '../../Title';
 import { StyledSubtitle } from './style';
+import petsImage from './img/dog.png';
 
 interface IStateProps {
   pets: pets;
@@ -28,6 +29,8 @@ type IPetsProps = IStateProps & IDispatchProps & IOwnProps;
 const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
   return (
     <div>
+      <img src={petsImage} alt="A digital draw of a dog." />
+
       <Title>Do you have pets?<br /> Do they <strong>chew</strong> plants?</Title>
       <StyledSubtitle>We are asking because some plants<br /> can be toxic for your buddy.</StyledSubtitle>
 
