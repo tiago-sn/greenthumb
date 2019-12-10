@@ -18,6 +18,7 @@ export interface IButtonProps {
   arrow?: "left arrow" | "right arrow";
   deactivated?: boolean;
   light?: boolean;
+  bold?: boolean;
 }
 
 /**
@@ -28,7 +29,7 @@ export interface IButtonProps {
  * 
  * @param {IButtonProps} props
  */
-const Button: React.FC<IButtonProps> = ({ to, arrow, deactivated, children, light }) => {
+const Button: React.FC<IButtonProps> = ({ to, arrow, deactivated, children, light, bold = false }) => {
   const selectArrowImage = () => {
     if (arrow === "left arrow" && light) return leftArrowGreen
     if (arrow === "left arrow" && !light) return leftArrowWhite
@@ -40,6 +41,7 @@ const Button: React.FC<IButtonProps> = ({ to, arrow, deactivated, children, ligh
     <StyledButton
       backgroundColor={light === true ? "#ffffff" : "#15573F"}
       borderColor={light === true ? "#15573F" : "#ffffff"}
+      bold={bold}
     >
       {
         arrow ? 

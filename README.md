@@ -24,7 +24,7 @@ Tell us:
 
 # Development
 
-## Instalation
+## Installation
 
 1. Clone the repository
 

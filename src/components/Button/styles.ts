@@ -3,6 +3,7 @@ import styled from 'styled-components';
 interface IStyledButtonProps {
   backgroundColor?: string;
   borderColor?: string;
+  bold?: boolean;
 }
 
 export const StyledButton = styled.div`
@@ -11,7 +12,6 @@ export const StyledButton = styled.div`
   border: 1px solid ${ (props: IStyledButtonProps) => props.borderColor };
   width: 174px;
   height: 50px;
-  cursor: pointer;
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -23,7 +23,8 @@ export const StyledButton = styled.div`
   }
 
   a {
-    font-weight: 600;
+    cursor: pointer;
+    font-weight: ${props => props.bold ? 600 : 300};
     font-size: 16px;
     color: ${ (props: IStyledButtonProps) => props.borderColor };
     font-family: "Montserrat", sans-serif;
