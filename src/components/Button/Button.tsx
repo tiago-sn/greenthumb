@@ -8,12 +8,7 @@ import rightArrowGreen from './img/right-arrow-green.svg';
 import leftArrowWhite from './img/left-arrow-white.svg';
 import rightArrowWhite from './img/right-arrow-white.svg';
 
-
 export interface IButtonProps {
-  /**
-   * this property holds the href to be used in the anchor tag of the <Link /> component
-   * from the react-router-dom package.
-   */
   to: string;
   arrow?: "left arrow" | "right arrow";
   deactivated?: boolean;
@@ -22,12 +17,14 @@ export interface IButtonProps {
 }
 
 /**
- * The root element of this component is an <Link> from react-router-dom package.
- * The <Link> component renders an anchor.
- * The href is passed through "to" prop.
- * This component renders a image, if it's passed the "src" and the "alt" string to it.
- * 
- * @param {IButtonProps} props
+ * @function [Button]
+ * The root element of this component is an <Link> from react-router-dom.
+ * @prop {string} to - the href to be user in the <Link>
+ * @prop {"left arrow" | "right arrow"} arrow - renders an arrow icon
+ * @prop {boolean} deactivated - deactivate the <a>
+ * @prop {boolean} light - make the background white and the font color green
+ * @prop {boolean} bold - make the text bold
+ * }
  */
 const Button: React.FC<IButtonProps> = ({ to, arrow, deactivated, children, light, bold = false }) => {
   const selectArrowImage = () => {
@@ -44,31 +41,26 @@ const Button: React.FC<IButtonProps> = ({ to, arrow, deactivated, children, ligh
       bold={bold}
     >
       {
+        /**
+         * @todo This img should be inside the <Link> below. Make this change broke the style.
+         */
         arrow ? 
-        <img 
-          src={
-            selectArrowImage()
-          } 
-          alt={arrow}
-        /> :
+        <img src={ selectArrowImage() } alt={arrow}/> :
         undefined
       }
 
       <Link 
-      /**
-       * This property acepts a string of a function. See the docs below to undertend
-       * the diference:
-       * https://reacttraining.com/react-router/web/api/Link/to-string
-       * https://reacttraining.com/react-router/web/api/Link/to-function
-       * 
-       * Here we check if the prop "activated" optionaly passed by the parant component.
-       * If it's true we pass the "to" property also passed by the parent component.
-       * If it's false we pass the "current location", i. e. when the user click this link
-       * he stays in the current location.
-       */
-      to={
-        deactivated ? (location) => location : to
-      }>
+        /**
+         * This property acepts a string or a function. 
+         * @see {@link https://reacttraining.com/react-router/web/api/Link/to-string}
+         * @see {@link https://reacttraining.com/react-router/web/api/Link/to-function}
+         * 
+         * We check the optional @prop "deactivated". 
+         * If it's true we pass a function to stay in the current location.
+         * If it's false we pass the @prop {string} to
+         */
+        to={ deactivated ? (location) => location : to }
+      >
         {children}
       </Link>
     </StyledButton>
