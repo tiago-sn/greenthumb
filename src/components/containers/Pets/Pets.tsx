@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
@@ -7,7 +6,6 @@ import { ApplicationState } from "../../../store/types";
 import { ActionCreators } from '../../../store/actions';
 import { Pets as pets } from "../../../service/api/types";
 
-import Header from '../../Header';
 import Button from '../../Button';
 
 interface IStateProps {
