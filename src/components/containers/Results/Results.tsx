@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from "redux";
-
-import Header from '../../Header';
 
 import { Plant, Sunlight, Water, Pets } from "../../../service/api/types";
 import { ApplicationState } from "../../../store/types";
 import { ActionCreators } from "../../../store/actions";
+
+import Button from '../../Button';
 
 interface IStateProps {
   plants: Plant[],
@@ -33,11 +32,8 @@ const Results: React.FC<IResultsProps> = (
   useEffect(() => {
     requestPlantList({sun, water, pets})
   }, [pets, requestPlantList, sun, water])
-
   return (
     <div>
-      <Header />
-
       <ul>
         {
           plants.length > 0 ? 
@@ -47,9 +43,15 @@ const Results: React.FC<IResultsProps> = (
       </ul>
 
       <h1>Results</h1>
-      <Link to={linkTo}>
+
+      <Button
+        to={linkTo}
+      >
+        buy now
+      </Button>
+      {/* <Link to={linkTo}>
         Next
-      </Link>
+      </Link> */}
     </div>
   );
 }

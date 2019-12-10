@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from "redux";
 
@@ -7,7 +6,15 @@ import { ApplicationState } from "../../../store/types";
 import { ActionCreators } from "../../../store/actions";
 import { Water as water } from "../../../service/api/types";
 
-import Header from '../../Header';
+import Button from '../../Button';
+import Title from '../../Title';
+import RadioButton from '../../RadioButton';
+
+import waterImage from "./img/wateringcan.png";
+import oneDropImage from './img/one-drop.svg';
+import twoDropsImage from './img/two-drops.svg';
+import threeDropsImage from './img/three-drops.svg';
+
 
 interface IStateProps {
   water: water;
@@ -25,31 +32,72 @@ interface IOwnProps {
 type IWaterProps = IOwnProps & IStateProps & IDispatchProps;
 
 const Water: React.FC<IWaterProps> = ({ linkTo, previous, selectWater, water }) => {
+  const handleCheckboxChenge = (e: React.ChangeEvent<HTMLInputElement>) => {
+    selectWater((e.currentTarget.value as water))
+  }
+
   return (
     <div>
-      <Header />
-      <h1>Water</h1>
+      <img src={waterImage} alt="A digital draw of a smiling watering can" />
 
-      <ul>
-        <li onClick={() => selectWater("daily")}>daily</li>
-        <li onClick={() => selectWater("rarely")}>rarely</li>
-        <li onClick={() => selectWater("regularly")}>regularly</li>
-      </ul>
+      <Title>How often do you want to <strong>water</strong> your plant?</Title>
+
+      <form action="">
+        <RadioButton
+          name="water"
+          id="rarely"
+          value="rarely"
+          img={{
+            src: oneDropImage,
+            alt: "One drop."
+          }}
+          handleChange={handleCheckboxChenge}
+        >
+          Rarely
+        </RadioButton>
+        <RadioButton
+          name="water"
+          id="regularly"
+          value="regularly"
+          img={{
+            src: twoDropsImage,
+            alt: "Two drops."
+          }}
+          handleChange={handleCheckboxChenge}
+        >
+          Regularly
+        </RadioButton>
+        <RadioButton
+          name="water"
+          id="daily"
+          value="daily"
+          img={{
+            src: threeDropsImage,
+            alt: "Three drops."
+          }}
+          handleChange={handleCheckboxChenge}
+        >
+          Daily
+        </RadioButton>
+      </form>
 
       <span>Selected: {water}</span>
 
-      <br />
-
-      <Link to={location => {
-        if (water !== "") return linkTo;
-        else return location;
-      }}>
+      <Button
+        to={linkTo}
+        deactivated={water === "" ? true : false}
+        arrow="right arrow"
+      >
         Next
-      </Link>
-      <br />
-      <Link to={previous}>
+      </Button>
+
+      <Button
+        to={previous}
+        arrow="left arrow"
+        light
+      >
         Previous
-      </Link>
+      </Button>
     </div>
   );
 }
