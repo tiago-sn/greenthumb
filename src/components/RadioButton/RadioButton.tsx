@@ -1,17 +1,24 @@
 import React from 'react';
 
+import { StyledLabel } from './style';
+
 interface IRadioButtonProps {
   name: string;
   id: string;
   value: string;
+  img: {
+    src: string;
+    alt: string;
+  }
   handleChange: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined
 }
 
 const RadioButton: React.FC<IRadioButtonProps> = ({
-  name, id, value, handleChange, children
+  name, id, value, img, handleChange, children
 }) => {
   return (
-    <label htmlFor={id}>
+    <StyledLabel htmlFor={id}>
+      <img src={img.src} alt={img.alt}/>
       <input
         type="radio"
         name={name}
@@ -20,7 +27,7 @@ const RadioButton: React.FC<IRadioButtonProps> = ({
         onChange={handleChange}
       />
       <span>{children}</span>
-    </label>
+    </StyledLabel>
   )
 }
 
