@@ -13,8 +13,7 @@ export const StyledButton = styled.div`
   width: 174px;
   height: 50px;
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 15px auto;
 
   img {
     max-width: 22px;
