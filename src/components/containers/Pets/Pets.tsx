@@ -8,6 +8,7 @@ import { ActionCreators } from '../../../store/actions';
 import { Pets as pets } from "../../../service/api/types";
 
 import Header from '../../Header';
+import Button from '../../Button';
 
 interface IStateProps {
   pets: pets;
@@ -27,7 +28,6 @@ type IPetsProps = IStateProps & IDispatchProps & IOwnProps;
 const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
   return (
     <div>
-      <Header />
       <h1>Pets</h1>
 
       <ul>
@@ -38,17 +38,36 @@ const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
       <span>Selected: {pets}</span>
 
       <br />
-
+{/* 
       <Link to={location => {
         if (pets !== "") return linkTo;
         else return location;
       }}>
         Next
-      </Link>
+      </Link> */}
+
+      <Button
+        to={linkTo}
+        deactivated={ pets === "" ? true : false }
+        arrow="right arrow"
+      >
+        Next
+      </Button>
+
       <br />
+
+      <Button
+        to={previous}
+        light
+        arrow="left arrow"
+      >
+        Previous
+      </Button>
+
+{/*       
       <Link to={previous}>
         Previous
-      </Link>
+      </Link> */}
     </div>
   );
 }

@@ -28,7 +28,6 @@ type IWaterProps = IOwnProps & IStateProps & IDispatchProps;
 const Water: React.FC<IWaterProps> = ({ linkTo, previous, selectWater, water }) => {
   return (
     <div>
-      <Header />
       <h1>Water</h1>
 
       <ul>
@@ -41,16 +40,26 @@ const Water: React.FC<IWaterProps> = ({ linkTo, previous, selectWater, water }) 
 
       <br />
 
-      <Link to={location => {
+      {/* <Link to={location => {
         if (water !== "") return linkTo;
         else return location;
       }}>
         Next
-      </Link>
+      </Link> */}
+
+      <Button
+        to={linkTo}
+        deactivated={ water === "" ? true : false }
+        arrow="right arrow"
+      >
+        Next
+      </Button>
+
       <br />
 
       <Button
         to={previous}
+        arrow="left arrow"
         light
       >
         Previous
