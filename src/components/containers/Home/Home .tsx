@@ -4,7 +4,6 @@ import Button from '../../Button';
 
 import "./style.scss";
 import bg from './img/bg.png';
-import rightArrowIcon from './img/right-arrow-icon.svg';
 
 interface IHomeProps {
   linkTo: string;
@@ -17,6 +16,7 @@ const Home: React.FC<IHomeProps> = ({ linkTo }) => {
       <Button 
         to={linkTo}
         arrow="right arrow"
+        bold
       >
         start quizz
       </Button>
