@@ -9,7 +9,11 @@ import { Pets as pets } from "../../../service/api/types";
 import Button from '../../Button';
 import Title from '../../Title';
 import { StyledSubtitle } from './style';
-import petsImage from './img/dog.png';
+import RadioButton from '../../RadioButton';
+
+import dogImage from './img/dog.png';
+import petImage from './img/pet.svg';
+import noPetImage from './img/no-answer.svg';
 
 interface IStateProps {
   pets: pets;
@@ -27,28 +31,45 @@ interface IOwnProps {
 type IPetsProps = IStateProps & IDispatchProps & IOwnProps;
 
 const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
+  const handleCheckboxChenge = (e: React.ChangeEvent<HTMLInputElement>) => {
+    selectPets((e.currentTarget.value as pets))
+  }
+
   return (
     <div>
-      <img src={petsImage} alt="A digital draw of a dog." />
+      <img src={dogImage} alt="A digital draw of a dog." />
 
       <Title>Do you have pets?<br /> Do they <strong>chew</strong> plants?</Title>
       <StyledSubtitle>We are asking because some plants<br /> can be toxic for your buddy.</StyledSubtitle>
 
-      <ul>
-        <li onClick={() => selectPets('true')}>true</li>
-        <li onClick={() => selectPets('false')}>false</li>
-      </ul>
+      <form action="">
+        <RadioButton
+          name="pet"
+          id="true"
+          value="true"
+          img={{
+            src: petImage,
+            alt: "A pet."
+          }}
+          handleChange={handleCheckboxChenge}
+        >
+          Yes
+        </RadioButton>
+        <RadioButton
+          name="pet"
+          id="false"
+          value="false"
+          img={{
+            src: noPetImage,
+            alt: "No pets."
+          }}
+          handleChange={handleCheckboxChenge}
+        >
+          No/They don't care
+        </RadioButton>
+      </form>
 
       <span>Selected: {pets}</span>
-
-      <br />
-      {/* 
-      <Link to={location => {
-        if (pets !== "") return linkTo;
-        else return location;
-      }}>
-        Next
-      </Link> */}
 
       <Button
         to={linkTo}
@@ -57,9 +78,6 @@ const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
       >
         Next
       </Button>
-
-      <br />
-
       <Button
         to={previous}
         light
@@ -67,11 +85,6 @@ const Pets: React.FC<IPetsProps> = ({ linkTo, previous, pets, selectPets }) => {
       >
         Previous
       </Button>
-
-      {/*       
-      <Link to={previous}>
-        Previous
-      </Link> */}
     </div>
   );
 }

@@ -9,7 +9,11 @@ import { Sunlight as Sun } from '../../../service/api/types';
 import Button from '../../Button';
 import Title from "../../Title";
 import RadioButton from '../../RadioButton';
+
 import sunImage from './img/sun.png';
+import highSunImage from './img/high-sun.svg';
+import lowSunImage from './img/low-sun.svg';
+import noSunImage from './img/no-answer.svg';
 
 interface IStateProps {
   sun: Sun;
@@ -42,52 +46,46 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
       <Title className="title">First, set the amount<br /> of <strong>sunlight</strong> your<br /> plant will get.</Title>
 
       <form action="" style={formStyle}>
-        {/* <label htmlFor="high">
-          <input
-            type="radio"
-            name="sun"
-            id="high"
-            value="high"
-            onChange={handleCheckboxChenge}
-          />
-          <span>High sunlight</span>
-        </label> */}
-
         <RadioButton
           name="sun"
           id="high"
           value="high"
+          img={{
+            src: highSunImage,
+            alt: "High sunlight"
+          }}
           handleChange={handleCheckboxChenge}
         >
           High sunlight
         </RadioButton>
-
-        <label htmlFor="low">
-          <input
-            type="radio"
-            name="sun"
-            id="low"
-            value="low"
-            onChange={handleCheckboxChenge}
-          />
-          <span>Low sunlight</span>
-        </label>
-
-        <label htmlFor="no">
-          <input
-            type="radio"
-            name="sun"
-            id="no"
-            value="no"
-            onChange={handleCheckboxChenge}
-          />
-          <span>No sunlight</span>
-        </label>
+        <RadioButton
+          name="sun"
+          id="low"
+          value="low"
+          img={{
+            src: lowSunImage,
+            alt: "Low sunligh"
+          }}
+          handleChange={handleCheckboxChenge}
+        >
+          Low sunlight
+        </RadioButton>
+        <RadioButton
+          name="sun"
+          id="no"
+          value="no"
+          img={{
+            src: noSunImage,
+            alt: "No sunlight"
+          }}
+          handleChange={handleCheckboxChenge}
+        >
+          No sunlight
+        </RadioButton>
       </form>
 
       <span>Selected: {sun}</span>
 
-      <br />
 
       <Button
         to={linkTo}
@@ -97,7 +95,6 @@ const Sunlight: React.FC<ISunlightProps> = ({ linkTo, previous, selectSunlight, 
         Next
       </Button>
 
-      <br />
 
       <Button
         to={previous}
