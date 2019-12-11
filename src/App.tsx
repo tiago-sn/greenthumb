@@ -20,40 +20,40 @@ const App: React.FC = () => {
         <Router>
           <div className="App">
             <Header />
-              <Switch>
-                <Route exact path="/">
-                  <Home linkTo="/sunlight" />
-                </Route>
+            <Switch>
+              <Route exact path="/">
+                <Home linkTo="/sunlight" />
+              </Route>
 
-                <Route path="/sunlight">
-                  <Sunlight
-                    previous="/"
-                    linkTo="/water"
-                  />
-                </Route>
+              <Route path="/sunlight">
+                <Sunlight
+                  previous="/"
+                  linkTo="/water"
+                />
+              </Route>
 
-                <Route path="/water">
-                  <Water
-                    previous="/sunlight"
-                    linkTo="/pets"
-                  />
-                </Route>
+              <Route path="/water">
+                <Water
+                  previous="/sunlight"
+                  linkTo="/pets"
+                />
+              </Route>
 
-                <Route path="/pets">
-                  <Pets
-                    previous="/water"
-                    linkTo="/results"
-                  />
-                </Route>
+              <Route path="/pets">
+                <Pets
+                  previous="/water"
+                  linkTo="/results"
+                />
+              </Route>
 
-                <Route path="/results">
-                  <Results linkTo="/purchase" />
-                </Route>
+              <Route path="/results">
+                <Results linkTo="/purchase" />
+              </Route>
 
-                <Route path="/purchase">
-                  <Purchase />
-                </Route>
-              </Switch>
+              <Route path="/purchase">
+                <Purchase />
+              </Route>
+            </Switch>
           </div>
         </Router>
     </Provider>
