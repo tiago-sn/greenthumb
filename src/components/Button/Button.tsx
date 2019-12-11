@@ -20,10 +20,10 @@ export interface IButtonProps {
  * @function [Button]
  * The root element of this component is an <Link> from react-router-dom.
  * @prop {string} to - the href to be user in the <Link>
- * @prop {"left arrow" | "right arrow"} arrow - renders an arrow icon
- * @prop {boolean} deactivated - deactivate the <a>
- * @prop {boolean} light - make the background white and the font color green
- * @prop {boolean} bold - make the text bold
+ * @prop {"left arrow" | "right arrow"} arrow? - renders an arrow icon
+ * @prop {boolean} deactivated? - deactivate the <a>
+ * @prop {boolean} light? - make the background white and the font color green
+ * @prop {boolean} bold? - make the text bold
  * }
  */
 const Button: React.FC<IButtonProps> = ({ to, arrow, deactivated, children, light, bold = false }) => {
